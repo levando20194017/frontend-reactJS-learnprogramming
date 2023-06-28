@@ -6,8 +6,59 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.scss'
 class AboutMe extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            a: '#ff652f',
+            b: 'white',
+            c: 'white',
+            intervalId1: null,
+            intervalId2: null,
+            intervalId3: null
+        };
+    }
 
+    componentDidMount() {
+        // Thiết lập interval để mỗi 1000ms tăng currentIndex lên 1
+
+        const intervalId1 = setInterval(() => {
+            this.setState({
+                a: "#ff652f",
+                b: "white",
+                c: "white"
+            });
+        }, 3000);
+        this.setState({ intervalId1 });
+        setTimeout(() => {
+            const intervalId2 = setInterval(() => {
+                this.setState({
+                    a: "white",
+                    b: "#ff652f",
+                    c: "white"
+                });
+            }, 3000);
+            this.setState({ intervalId2 });
+        }, 1000);
+        setTimeout(() => {
+            const intervalId3 = setInterval(() => {
+                this.setState({
+                    a: "white",
+                    b: "white",
+                    c: "#ff652f"
+                });
+            }, 3000);
+            this.setState({ intervalId3 });
+        }, 2000)
+    }
+
+    componentWillUnmount() {
+        // Xóa interval khi component bị unmount
+        clearInterval(this.state.intervalId1);
+        clearInterval(this.state.intervalId2);
+        clearInterval(this.state.intervalId3);
+    }
     render() {
+
         return (
             <div className='about-me'>
                 <main>
@@ -16,7 +67,9 @@ class AboutMe extends Component {
 
                             <h2>Xin chào! Tôi tên là</h2>
                             <h1 className="home__name">
-                                <span className="home__name--last">Lê Văn Do</span>
+                                <span style={{ color: this.state.a }}>Lê</span>
+                                <span style={{ color: this.state.b, marginLeft: "10px" }}>Văn</span>
+                                <span style={{ color: this.state.c, marginLeft: "10px" }}>Do</span>
                                 <h2>Full-Stack developer</h2>
                             </h1>
                             <h6>Sinh viên năm 4 Đại học Bách khoa Hà Nội.</h6>
