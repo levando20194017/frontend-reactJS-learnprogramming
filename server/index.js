@@ -21,8 +21,17 @@ if (logRequests) {
 
 // Serve the static files from the React app
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://codecrush-hazel.vercel.app');
+    res.setHeader('Access-Control-Allow-Origin', 'https://codecrush-seven.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
+});
+
+app.options('*', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://codecrush-seven.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.status(200).send();
 });
 app.use(subDir, express.static(buildDir));
 // Handles any requests that don't match the ones above
