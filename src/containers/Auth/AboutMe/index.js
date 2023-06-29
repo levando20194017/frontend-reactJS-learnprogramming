@@ -92,7 +92,7 @@ class AboutMe extends Component {
                         </div>
                         <div className='col-6'>
                             <div>
-                                <h5>Website learn programming</h5>
+                                <h5>Website learn programming - CodeCrush</h5>
                                 <p>Website có lấy 1 phần ý tưởng từ <b>F8</b>.</p>
                                 <p><b>Các chức năng mà trang web có.</b></p>
                                 <p style={{ color: "#ff652f" }}><b>Về phía người dùng.</b></p>
