@@ -20,6 +20,10 @@ if (logRequests) {
 }
 
 // Serve the static files from the React app
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 app.use(subDir, express.static(buildDir));
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
